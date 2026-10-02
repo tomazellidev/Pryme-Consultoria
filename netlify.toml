@@ -1,7 +1,6 @@
 [build]
   command = "npm run build"
-  publish = "Pryme-Digital-Primeira-Versao/dist"
-  functions = "Pryme-Digital-Primeira-Versao/netlify/functions"
+  publish = "dist"
 [build.environment]
   NODE_VERSION = "22"
 [functions]
