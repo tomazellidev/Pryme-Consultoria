@@ -1,0 +1,1 @@
+export {default} from './Pryme-Digital-Primeira-Versao/netlify/functions/api.mjs';
