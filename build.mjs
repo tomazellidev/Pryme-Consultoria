@@ -1,4 +1,5 @@
-import {mkdir,rm,copyFile} from 'node:fs/promises';
+import {mkdir,rm,copyFile,cp} from 'node:fs/promises';
+import {existsSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 import {resolve,dirname} from 'node:path';
 
@@ -12,6 +13,10 @@ const publicFiles=['index.html','pryme-ultimate.css','pryme-ultimate.js','diagno
 await rm(output,{recursive:true,force:true});
 await mkdir(output,{recursive:true});
 for(const name of publicFiles) await copyFile(resolve(root,name),resolve(output,name));
-await mkdir(resolve(output,'assets'),{recursive:true});
-await copyFile(resolve(root,'assets/pryme-ultimate-logo.png'),resolve(output,'assets/pryme-ultimate-logo.png'));
+const assetsDir=resolve(root,'assets');
+if(existsSync(assetsDir)){
+  await cp(assetsDir,resolve(output,'assets'),{recursive:true});
+}else{
+  console.warn('Aviso: pasta "assets" não encontrada; a logo não foi incluída no build.');
+}
 console.log('Pryme Ultimate compilado em dist (página independente).');
