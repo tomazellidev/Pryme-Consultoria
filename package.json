@@ -1,0 +1,16 @@
+{
+  "name": "pryme-consultoria-ultimate",
+  "version": "3.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npm run build && node dev.mjs",
+    "build": "node build.mjs",
+    "check": "node --check build.mjs && node --check dev.mjs && node --check pryme-ultimate.js && node --check diagnostic-model.js",
+    "test": "node --test --test-isolation=none tests/*.test.mjs",
+    "test:browser": "node tests/browser.mjs"
+  },
+  "engines": {
+    "node": ">=22.8"
+  }
+}
